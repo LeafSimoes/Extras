@@ -50,26 +50,41 @@ def ValidaCPF(cpf):
     y = CalculaDigitos(novo)
     verifica = [y[-2], y[-1]]
     if valida == verifica:
+        print(" ")
         print("CPF Verdadeiro")
+        print(" ")
     else:
+        print(" ")
         print("CPF Falso")
+        print(" ")
 
 
-decisao = eval(input("""(1) Gerar CPF
+x = 0
+
+while x == 0:
+    decisao = input("""(1) Gerar CPF
 (2) Verificar CPF
-"""))
+""")
 
-if decisao == 1:
-    CPF = (CalculaDigitos(GeraCPF()))
-    print("CPF gerado: {}{}{}{}{}{}{}{}{}{}{}{}".format(CPF[0],CPF[1],CPF[2],CPF[3],CPF[4],CPF[5],CPF[6],CPF[7],CPF[8],"-",CPF[9],CPF[10]))
+    if decisao == '1':
+        print(" ")
+        CPF = (CalculaDigitos(GeraCPF()))
+        print("CPF gerado: {}{}{}{}{}{}{}{}{}{}{}{}".format(CPF[0],CPF[1],CPF[2],CPF[3],CPF[4],CPF[5],CPF[6],CPF[7],CPF[8],"-",CPF[9],CPF[10]))
 
-elif decisao == 2:
+    elif decisao == '2':
+        print(" ")
+        EntraCPF = str(input("Entre com o CPF: ").replace("-", ""))
+        CPF = []
+        for x in range(len(EntraCPF)):
+            CPF.append(eval(EntraCPF[x]))
+        ValidaCPF(CPF)
+
+    else:
+        print(" ")
+        print("Inválido")
+        print(" ")
+
+    escolha = input("Deseja Repetir? (S/N): ").replace("S", 's')
+    if escolha != 's':
+        break
     print(" ")
-    EntraCPF = str(input("Entre com o CPF: ").replace("-", ""))
-    CPF = []
-    for x in range(len(EntraCPF)):
-        CPF.append(eval(EntraCPF[x]))
-    ValidaCPF(CPF)
-
-else:
-    print("Inválido")
